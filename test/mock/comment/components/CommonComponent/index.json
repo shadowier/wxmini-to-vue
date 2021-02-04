@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-uploader": "../../../../../assets/vantNew/uploader/index",
+    "van-rate": "../../../../../assets/vantNew/rate/index"
+  }
+}

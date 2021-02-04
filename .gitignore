@@ -9,3 +9,7 @@ npm-debug.log.*
 # yarn
 yarn-error.log
 yarn-error.log.*
+
+# test
+test/output/
+coverage

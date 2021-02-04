@@ -1,0 +1,37 @@
+<view class="showitem-box" wx:if="{{!readOnly}}">
+  <view class="showitem-item">
+    <view class="showitem-tile">{{item.name}}</view>
+    <view  wx:if="{{item.scoring}}">
+      <van-rate  size="{{ 32 }}" bind:change="onRateChange"/>
+    </view>
+  </view>
+  <view  wx:if="{{item.textComment}}" class="showitem-item showitem-text">
+    <textarea placeholder="请输入..." bindinput="handleTextareaChange"></textarea>
+  </view>
+  <view wx:if="{{item.uploadFile}}" class="showitem-item">
+    <van-uploader file-list="{{ fileList }}" accept="image" bind:delete="onDeleteFile" bind:after-read="onAfterRead"/>
+  </view>
+</view>
+
+<view class="showitem-box" wx:elif="{{readOnly}}">
+  <view class="showitem-item">
+    <view class="showitem-tile">{{item.name}}</view>
+    <view wx:if="{{item.score}}">
+      <van-rate  size="{{ 32 }}" value="{{ item.score }}" readonly/>
+    </view>
+  </view>
+  <view wx:if="{{item.content}}" class="showitem-item showitem-text">
+    <textarea disabled placeholder="请输入..." value="{{ item.content }}"></textarea>
+  </view>
+  <view wx:if="{{item.files && !!item.files.length}}" class="showitem-item">
+    <van-uploader file-list="{{ fileList }}" accept="image" deletable="{{false}}" show-upload="{{false}}" catchtap/>
+  </view>
+  <view wx:if="{{item.appendContent}}" class="showitem-item showitem-text showitem-comment">
+    <view wx:if="{{item.appendContent.userComment}}">
+      用户追加：{{item.appendContent.userComment}}
+    </view>
+    <view wx:if="{{item.appendContent.merchantComment}}">
+      商家追加：{{item.appendContent.merchantComment}}
+    </view>
+  </view>
+</view>

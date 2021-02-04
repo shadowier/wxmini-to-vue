@@ -1,0 +1,114 @@
+<view>
+  <view class="banner">
+    <!-- banner -->
+    <image mode="aspectFill" src="https://cos.yunpengai.com/images/miniprograms/20200409223976747674.jpg"></image>
+    <view class="scan_box" bindtap="handleScanQr">
+      <van-icon name="scan" size="28" color="#f0a" custom-style="display:flex;align-items: center;" />
+    </view>
+  </view>
+  <!-- <view class="header header_info">
+    <input class="phone_box" disabled placeholder="手机号"></input>
+    <text class="number_box">柜号</text>
+  </view> -->
+  <view class="header">
+    <view class="phone_box">
+      <input value="{{phone}}" disabled placeholder="请输入手机号" bindtap="handleShowKey"></input>
+      <label class="checkbox" bindtap="handleSelectWarm">
+        <checkbox value="{{ isWarm }}" checked="{{item.checked}}" />加热
+      </label>
+    </view>
+    <!-- <text class="number_box" bindtap="handleShowList">{{ number_no }}</text> -->
+    <!-- <view class="select_warm">
+      
+    </view> -->
+    <view class="select_box">
+      <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox" wx:for="{{items}}" class="select_box-item" wx:key="index">
+          <checkbox value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+        </label>
+      </checkbox-group>
+    </view>
+  </view>
+
+  <view class="keykeyboard_box" wx:if="{{keyShow}}">
+    <view class="key_close" bindtap="handleShowKey">
+      <image class="grid-img" src="../../images/down_icon.png" />
+    </view>
+    <view class="keykeyboard">
+      <view class="key-item_box" wx:for="{{keykeynumbers}}" wx:key="key">
+        <view class="key-item" data-key="{{item.key}}" hover-class="key-item-hover" catchtouchstart="handleTapKey" hover-start-time="0" hover-stay-time="30">{{item.name}}</view>
+      </view>
+      <view class="key-item_box">
+        <view class="key-item key-icon" hover-class="key-item-hover" catchlongtap="handleTapClear" bindtouchstart="handleTapClearOne" hover-stay-time="30">
+          <image src="/images/delkey.png"></image>
+        </view>
+      </view>
+      <view class="key-item_box key-confim">
+        <view class="key-item" hover-class="key-item-hover" catchtouchstart="handleTapConfim" hover-stay-time="30">确认</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="tabs_box">
+    <van-tabs swipeable animated sticky active="{{activeIndex}}">
+      <!-- <van-tab title="取餐柜1">
+      
+      </van-tab> -->
+      <van-tab title="{{sideItem.num?sideItem.num+'号副柜':'主柜'}}" wx:for="{{ sideBoards }}" wx:for-index="s_index" wx:key="id" wx:for-item="sideItem">
+        <view class="tank_list">
+
+          <view class="van-grid-item {{item.cell == number_no?'active':''}}" hover-start-time="30" hover-stay-time="100" hover-class="van-grid-item_hover" wx:for="{{ cellList[s_index] }}" wx:key="index" bindtap="handleSelectCurrentItem" data-index="{{item.cell}}"
+            data-cashierDeskId="{{item.cashierDeskId}}">
+            <van-tag mark type="danger" class="item-info" wx:if="{{ item.status }}">满</van-tag>
+            <van-tag mark type="success" class="item-info" wx:else>空</van-tag>
+            <view wx:if="{{showCellChecked}}" class="checkboxes">
+              <van-checkbox name="{{ item.cell }}" catch:tap="noop" class="checkboxes-{{ item.cell }}" checked-color="#07c160"></van-checkbox>
+            </view>
+
+            <image class="grid-img" src="../../images/lock.png" />
+            <view class="item-text">{{item.cell}}</view>
+            <image class="sun" src="../../images/icon_sun.png" wx:if="{{item.isWarm}}"></image>
+          </view>
+
+          <div class="van-grid-item_xx" wx:for="{{ 4 - cellList[0].length%4 }}" wx:key="index"></div>
+        </view>
+      </van-tab>
+
+    </van-tabs>
+
+  </view>
+
+
+  <van-popup show="{{ showQrSave }}" position="center" bind:close="onClose" round>
+    <view class="showMessageBox">
+      <view class="qrclose_box" bindtap="handleCloseQrShow">x</view>
+      <view class="title">提示</view>
+      <view class="message">
+        <text>是否加热</text>
+      </view>
+      <view class="saveQrMain">
+        <view data-warm="0" bindtap="handleQrSave">不加热</view>
+        <view data-warm="1" bindtap="handleQrSave">加热</view>
+      </view>
+    </view>
+  </van-popup>
+
+  <van-popup show="{{ showMessageBox }}" position="center" bind:close="onClose" round>
+    <view class="showMessageBox">
+
+      <view class="title">提示</view>
+      <view class="message">
+        <text>“<text class="number_no">{{!isQr ? number_no : number_no1}}</text>”号格打开成功\n是否继续存餐？</text>
+      </view>
+      <view class="action_box" wx:if="{{!isQr}}">
+        <checkbox checked="{{showMessageBoxClear}}" bindtap="handleSelectCheckbox">同一手机号</checkbox>
+      </view>
+
+      <view class="footer">
+        <view class="left" bindtap="handleClose">取消</view>
+        <view class="right" bindtap="handleConfirm">确定</view>
+      </view>
+
+    </view>
+  </van-popup>
+</view>

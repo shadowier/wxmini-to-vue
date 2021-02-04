@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "用户评论数据",
+  "usingComponents": {
+    "van-tab": "../../../../assets/vantNew/tab/index",
+    "van-tabs": "../../../../assets/vantNew/tabs/index",
+    "van-rate": "../../../../assets/vantNew/rate/index",
+    "van-button": "../../../../assets/vant/button/index",
+    "van-cell": "../../../../assets/vant/cell/index",
+    "van-cell-group": "../../../../assets/vant/cell-group/index",
+    "van-popup": "../../../../assets/vant/popup/index",
+    "van-datetime-picker": "../../../../assets/vantNew/datetime-picker/index",
+    "van-row": "../../../../assets/vantNew/row/index",
+    "van-col": "../../../../assets/vantNew/col/index"
+    
+  }
+}

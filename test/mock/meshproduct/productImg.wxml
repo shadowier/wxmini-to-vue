@@ -1,0 +1,20 @@
+<block wx:for="{{imgList}}" wx:key="index">
+
+  <view class='content1'>
+    <image id="{{item.imgUrl}}" class="left" src="{{item.imgUrl}}" bindtap="previewImg"></image>
+    <button id="{{item.productImgId}}" bindtap="delImg" type="default" style='width:82px;position:relative;left:129px;top:-56px;height:29px;background: inherit;background-color: rgba(255, 255, 255, 1);box-sizing: border-box;border-width: 1px;border-style: solid;border-color: rgba(215, 215, 215, 1);border-radius: 24px;box-shadow: none;font-weight: 400;font-style: normal;font-size:14px;color:grey;line-height:29px;'> 删除 </button>
+  </view>
+
+</block>
+
+
+
+<view class='content1' style='border-top:none;'>
+<view class=''>
+  <image class='image' src='{{defaultImg}}' bindtap="addImg"></image>
+  <text class='plus' style="display:block;opacity:{{opacity}}" bindtap="addImg">+</text>
+  <image class='image2' src='/assets/u630.png'></image>
+  <text class='text2'>添加更多菜品图片提高识别率</text>
+</view>
+<button type="default" bindtap="doAddImg" style='width:82px;height:29px;left: 130px;top:-121px;background: inherit;background-color: rgba(255, 255, 255, 1);box-sizing: border-box;border-width: 1px;border-style: solid;border-color: rgba(215, 215, 215, 1);border-radius: 24px;box-shadow: none;font-weight: 400;font-style: normal;font-size:14px;color:grey;line-height:29px;'> 添加 </button>
+</view>

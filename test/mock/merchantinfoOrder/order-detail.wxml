@@ -1,0 +1,126 @@
+<view wx:if="{{isLoad}}">
+  <view class="image-flex">
+    <image src="{{orderImg}}" class="image-container" wx:if="{{ orderImg && orderStatus == 0 }}"></image>
+  </view>
+
+  <view class="number-box" wx:if="{{ orderImg && orderStatus == 0 }}">
+    <view class="number-box-view">存餐码
+      <text class="number-box-text">{{mealCode}}</text>
+    </view>
+  </view>
+
+  <!-- <view class="take-view"> -->
+  <view class="take-view" wx:if="{{ orderImg && orderStatus == 0}}">
+    <!-- <van-tag size="large" type="primary" wx:if="{{ orderStatus == 0 }}">未存餐</van-tag>
+  <van-tag size="large" type="warning" wx:elif="{{ orderStatus == 1}}" >未取餐</van-tag>
+  <van-tag size="large" type="success" wx:else>已取餐</van-tag> -->
+    <van-button bind:click="takeMeals" type="primary" class="takeBtn">一键存餐</van-button>
+
+    <view class="switch-box">
+      <van-switch checked="{{ switchChecked }}" bind:change="onChangeSwitch" size="30rpx" disabled="{{switchChecked}}" />
+      <image src="../../assets/u666.png" class="hint" bindtap="hintTap"></image>
+    </view>
+    <!-- <van-button bind:click="takeMeals" type="primary" class="takeBtn" disabled="{{ orderStatus != 0 }}">一键存餐</van-button> -->
+    <!-- <van-button type="primary" bindtap="takeMeals" type="primary" disabled="{{ orderStatus != 1}}">一键取餐</van-button> -->
+
+  </view>
+
+  <view class="order--info-base order-base" bindtap="$orderHeader$orderTap">
+    <view class="base__hd flex flex--y-center flex--between">
+      <text class="name">{{order.shopName}}</text>
+      <!-- <view class="order--pay-way {{$orderHeader$payTypeStyle[$orderHeader$order.payType]}}">{{$orderHeader$payType[$orderHeader$order.payType]}}</view> -->
+      <view class="tag-view">
+        <view class="order--pay-way {{orderStatusStyle[orderStatus]}}" wx:if="{{ orderImg }}">{{orderStatusType[orderStatus]}}</view>
+        <view class="space"></view>
+        <view class="order--pay-way {{payTypeStyle[order.payType]}}">{{payType[order.payType]}}</view>
+      </view>
+    </view>
+    <view class="base__bd flex flex--y-center flex--between">
+      <view class="bd-left">
+        <view class="order-no">订单号：{{order.orderNo}}</view>
+        <view class="order-no">手机号：{{order.customerPhone}}</view>
+        <view class="order-no">客户名：{{order.customerName}}</view>
+        <view class="order-no">用户分组：{{order.groupName || '未分组'}}</view>
+        <view class="order-date">{{order.formateOrderTime}}</view>
+      </view>
+      <view class="bd-right">
+        <view class="order-product">共{{order.itemCount}}项菜品</view>
+        <view class="order-price">￥{{order.realFee / 100}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="product-list">
+    <view class="product-list__title">订单备注:</view>
+    <view class="product__item">
+      <text class="name note">{{order.note||''}}</text>
+    </view>
+  </view>
+
+  <view class="product-list">
+    <view class="product__item flex" wx:for="{{orderItems}}" wx:for-item="item" wx:key="index">
+      <text id="{{item.productId}}" bindtap="toProductDetailPage" class="name flex__item" wx:if="{{item.hasInfo}}" style="text-decoration: underline;color: blue;">{{item.productName}}</text>
+      <text class="name flex__item" wx:if="{{!item.hasInfo}}">{{item.productName}}</text>
+      <view class="aside">
+        <text class="quantity">x{{item.quantity}}</text>
+        <text class="rprice">￥{{item.realPrice / 100}}</text>
+      </view>
+    </view>
+
+    <view class="product__item product__total flex">
+      <text class="name flex__item">小计</text>
+      <view class="aside">
+        <text class="quantity">x{{order.itemCount + surchargeCount}}</text>
+        <text class="rprice">￥{{order.totalFee / 100}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="discount">
+    <view class="discount-item flex flex--y-center">
+      <text class="logo">促</text>
+      <text class="flex__item title">促销优惠</text>
+      <text class="rprice">￥{{(order.totalFee - order.realFee)/100}}</text>
+    </view>
+    <view class="real-toatl-price">
+      <view class="real-total-box">
+        <text class="total">合计</text>
+        <text class="price">￥{{order.realFee / 100}}</text>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="product-list" wx:if="{{order.nutritionList}}">
+    <text class="flex__item title">营养分析报告</text>
+    <view class="discount-item flex flex--y-center" style="border-top:1px solid #ddd" wx:for="{{order.nutritionList}}" wx:for-item="item" wx:key="index">
+
+      <view class="product__item flex">
+        <text class="name flex__item">{{item.name}}</text>
+        <text class="rprice">{{item.count}}</text>
+      </view>
+
+    </view>
+
+  </view>
+
+  <view class="discount-img" wx:if="{{order.productOrderUrl}}" >
+
+    <image src="{{order.productOrderUrl}}" bindtap="handleShowImage"/>
+
+  </view>
+
+
+  <van-dialog message="是否继续存餐？" title="提示" show="{{ showDialog }}" show-cancel-button bind:cancel="cancelDialog" bind:confirm="confirmDialog" transition="none" async-close="true">
+
+  </van-dialog>
+  <van-dialog id="van-dialog" />
+
+</view>
+
+<view class="footer">
+  <view class="actions">
+    <view class="action-item disable" bindtap="handleClickAction" data-type="0" wx:if="{{!isComment}}">未评价</view>
+    <view class="action-item" bindtap="handleClickAction" data-type="1" wx:if="{{isComment}}">查看评价</view>
+  </view>
+</view>

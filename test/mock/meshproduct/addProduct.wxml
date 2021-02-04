@@ -1,0 +1,140 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+
+	<view class="weui-cells__title">请输入相关信息</view>
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell weui-cell_input">
+			<view class="weui-cell__hd">
+				<view class="weui-label">菜品名称</view>
+			</view>
+			<view class="weui-cell__bd">
+				<input class="weui-input" maxlength="20" value="{{productName}}" bindinput='changeInput' data-prop='productName' placeholder="请输入菜品名称" />
+			</view>
+		</view>
+		<view class="weui-cell weui-cell_input">
+			<view class="weui-cell__hd">
+				<view class="weui-label">菜品价格</view>
+			</view>
+			<view class="weui-cell__bd">
+				<input class="weui-input" maxlength="10" value="{{productPrice}}" bindinput='changeInput' data-prop='productPrice' placeholder="请输入菜品价格" />
+			</view>
+		</view>
+		<view class="weui-cell weui-cell_input">
+			<view class="weui-cell__hd">
+				<view class="weui-label">菜品单位</view>
+			</view>
+			<view class="weui-cell__bd">
+				<input class="weui-input" maxlength="5" value="{{standard}}" bindinput='changeInput' data-prop='standard' placeholder="例如 只、个、份、打、瓶" />
+			</view>
+		</view>
+
+		<view class="weui-cells weui-cell weui-cell_input">
+			<view class="weui-cell__hd">
+				<view class="weui-label">菜品描述</view>
+			</view>
+			<view class="weui-cell__bd">
+				<input class="weui-input" maxlength="10" value="{{description}}" maxlength="200" bindinput='changeInput' data-prop='description' placeholder="请输入菜品描述" />
+			</view>
+		</view>
+	</view>
+
+
+	<view class="weui-cells__title">早餐库存配置</view>
+
+	<view class="weui-cells weui-cells_after-title" style="padding-bottom:2px">
+		<view class="weui-cell weui-cell_select">
+			<view class="weui-cell__bd">
+				<picker bindchange="bindAccountChangeBreakfast" value="{{accounts[accountIndexBreakfast].minorCategoryId}}" range="{{accounts}}" range-key="{{'minorCategoryName'}}">
+					<view class="weui-select">{{accounts[accountIndexBreakfast].minorCategoryName}}</view>
+				</picker>
+			</view>
+		</view>
+		<view wx:if="{{showBreakfastInput}}" class="weui-cell__bd" style="border:1px solid #999999">
+			<input class="weui-input" maxlength="5" value="{{breakfastSum}}" bindinput='changeInput' data-prop='breakfastSum' placeholder="请输入库存量" />
+		</view>
+
+	</view>
+
+
+	<view class="weui-cells__title">中餐库存配置</view>
+
+	<view class="weui-cells weui-cells_after-title" style="padding-bottom:2px">
+		<view class="weui-cell weui-cell_select">
+			<view class="weui-cell__bd">
+				<picker bindchange="bindAccountChangeLunch" value="{{accounts[accountIndexLunch].minorCategoryId}}" range="{{accounts}}" range-key="{{'minorCategoryName'}}">
+					<view class="weui-select">{{accounts[accountIndexLunch].minorCategoryName}}</view>
+				</picker>
+			</view>
+		</view>
+		<view wx:if="{{showLunchInput}}" class="weui-cell__bd" style="border:1px solid #999999">
+			<input class="weui-input" maxlength="5" value="{{lunchSum}}" bindinput='changeInput' data-prop='lunchSum' placeholder="请输入库存量" />
+		</view>
+
+	</view>
+
+
+	<view class="weui-cells__title">晚餐库存配置</view>
+
+	<view class="weui-cells weui-cells_after-title" style="padding-bottom:2px">
+		<view class="weui-cell weui-cell_select">
+			<view class="weui-cell__bd">
+				<picker bindchange="bindAccountChangeDinner" value="{{accounts[accountIndexDinner].minorCategoryId}}" range="{{accounts}}" range-key="{{'minorCategoryName'}}">
+					<view class="weui-select">{{accounts[accountIndexDinner].minorCategoryName}}</view>
+				</picker>
+			</view>
+		</view>
+		<view wx:if="{{showDinnerInput}}" class="weui-cell__bd" style="border:1px solid #999999">
+			<input class="weui-input" maxlength="5" value="{{dinnerSum}}" bindinput='changeInput' data-prop='dinnerSum' placeholder="请输入库存量" />
+		</view>
+
+	</view>
+
+	<view class="weui-btn-area" bindtap='onSubmitForm'>
+		<button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
+	</view>
+
+	<!-- 营养数据 -->
+	<view style="margin-top: 25px;" wx:if="{{true}}">
+		<view class="weui-cell food-view">
+			<view class="weui-cell__hd">
+				<view class="weui-label">营养数据设置</view>
+			</view>
+			<view class="weui-cell__bd">
+				<button class="weui-input food-btn" bindtap="goReferenceDishes">参考菜品</button>
+			</view>
+			<view class="weui-cell__bd">
+				<button class="weui-input food-btn" bindtap="goAddFood">食材增加</button>
+			</view>
+		</view>
+		<view class="weui-cell food-view-bg">
+			<view class="weui-cell__hd">
+				<view class="weui-label">菜品重量(克)</view>
+			</view>
+			<view class="weui-cell__bd">
+				<input class="weui-input" maxlength="20" value="{{foodQuality}}" bindinput='changeInputFoodQuality' data-prop='foodQuality' placeholder="请输入菜品重量" type="digit" />
+			</view>
+		</view>
+		<view wx:if="{{foodArray.length > 0}}" wx:for="{{foodArray}}" wx:key="unique">
+			<view class="weui-cell food-view-bg">
+				<view class="weui-cell__hd">
+					<view class="weui-label">{{item.foodName}}</view>
+				</view>
+				<view class="weui-cell__bd">
+					<view class="weui-cell">
+						<input class="weui-input food-num food-text-center" maxlength="3" value="{{item.foodRate}}" bindinput='changeRateInput' data-index="{{index}}" placeholder="" type="number" />
+						<text>%</text>
+					</view>
+				</view>
+				<view class="weui-cell__hd">
+					<view class="weui-label food-text-center">{{ item.foodQui }} 克</view>
+				</view>
+				<view class="weui-cell__hd" data-index="{{index}}" bindtap="deleteListFood">
+					<view class="weui-icon food-delete-icon">-</view>
+				</view>
+			</view>
+		</view>
+		<view class="weui-btn-area" bindtap='onFoodSubmitForm' wx:if="{{foodArray.length > 0}}">
+			<button class="weui-btn" type="primary">确定</button>
+		</view>
+	</view>
+
+</view>

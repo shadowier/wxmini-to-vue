@@ -1,0 +1,45 @@
+<view class="content-box">
+
+  <!-- <view wx:for="{{showViewData.items}}" wx:key="code" class="showitem-box">
+    <view class="showitem-tile">{{item.name}}</view>
+    <view wx:if="{{item.scoring}}" class="showitem-item">
+      <van-rate  size="{{ 40 }}" bind:change="onRateChange" data-item="{{item}}"/>
+    </view>
+    <view  wx:if="{{item.textComment}}" class="showitem-item showitem-text">
+      <textarea data-item="{{item}}" placeholder="请输入..." bindinput="handleTextareaChange"></textarea>
+    </view>
+    <view wx:if="{{item.uploadFile}}" class="showitem-item">
+      <van-uploader file-list="{{ fileList[item.code] }}" accept="image" bind:delete="onDeleteFile" bind:after-read="onAfterRead"  data-item="{{item}}"/>
+    </view>
+  </view> -->
+
+
+
+  <block  wx:for="{{showViewData.items}}" wx:key="code">
+    <common-component wx:key="code" item="{{ item }}" bind:change="onChangeItem"/>
+  </block>
+
+
+  <block  wx:for="{{orderItems}}" wx:key="productId" wx:for-item="orderItem">
+
+    <view wx:key="productId" class="order-item-box">
+      <view class="order-item-header">
+        <!-- <image src="http://q2.qlogo.cn/headimg_dl?dst_uin=1450941858&spec=100"></image> -->
+        <view class="order-item-info">
+          <view class="order-item-title">{{orderItem.productName}}</view>
+          <view class="order-item-money">¥{{orderItem.price / 100}}</view>
+          <view class="order-item-quantity">x{{orderItem.quantity}}</view>
+        </view>
+      </view>
+      <block  wx:for="{{orderItemShowViewData.items}}" wx:key="code">
+        <common-component wx:key="code" item="{{ item }}" data-id="{{orderItem.productId}}" bind:change="onChangeOrderItem"/>
+      </block>
+    </view>
+   
+  </block>
+
+
+  <view class="content-action">
+    <view bindtap="handleSubmit" class="content-submit" wx:if="{{showViewData.items && !!showViewData.items.length}}">提交</view>
+  </view>
+</view>

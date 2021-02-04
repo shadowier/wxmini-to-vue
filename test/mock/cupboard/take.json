@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "取餐",
+  "usingComponents": {
+    "van-cell": "../../assets/vant/cell/index",
+    "van-cell-group": "../../assets/vant/cell-group/index"
+  }
+}

@@ -1,0 +1,65 @@
+page {
+  background-color: #f5f5f5;
+}
+.page-me .base {
+  padding: 28rpx 56rpx 40rpx 56rpx;
+  background-color: #fff;
+  text-align: center;
+  position: relative;
+}
+.page-me .btn-phone {
+  background-color: #fff;
+  color: #3498db;
+  border: 1px solid #349bdb;
+  display: inline-block;
+  position: absolute;
+  right: 28rpx;
+  top: 28rpx;
+  padding: 12rpx 20rpx;
+  line-height: 1;
+  font-size: 24rpx;
+  border-radius: 50px;
+}
+.page-me .base__user image {
+  width: 152rpx;
+  height: 152rpx;
+  border-radius: 76rpx;
+}
+.page-me .base__user .name {
+  color: #333;
+  font-size: 40prx;
+}
+.more {
+  margin-top: 40rpx;
+}
+.confing__cell {
+  padding: 20rpx 24rpx 20rpx 27rpx;
+  position: relative;
+  background-color: #fff;
+  font-size: 28rpx;
+  color: #333;
+}
+.confing__cell .cell__img {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}
+.confing__cell .bottom__line {
+  position: absolute;
+  height: 0.5rpx;
+  bottom: 1rpx;
+  left: 0;
+  right: 0;
+  background-color: #ddd;
+  opacity: .5;
+}
+.confing__cell .arrow {
+  width: 18rpx;
+  height: 28rpx;
+}
+.close_style{
+    background-color: #B2B2B2;
+  }
+.open_style{
+    background-color: white;
+  }

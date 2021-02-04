@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-tag": "../../assets/vant/tag/index",
+    "van-dialog": "../../assets/vant/dialog/index",
+    "van-button": "../../assets/vant/button/index",
+    "van-switch": "../../assets/vant/switch/index"
+  },
+  "navigationBarTitleText": "订单详情"
+}

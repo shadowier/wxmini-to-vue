@@ -1,0 +1,152 @@
+<view class="more">
+  <view wx:if="{{cashierDeskProduct == 1}}" class="flex flex--y-center flex--between  confing__cell" bindtap="toMerchant" hover-class="none">
+    <view class="flex flex--y-center">
+      <image class="cell__img" src="http://img.binguoai.com/2018-05-27-icon_me_xieyi%402x.png" />
+      <text>餐台菜品管理</text>
+    </view>
+    <image class="arrow" src="http://img.binguoai.com/2018-06-26-icon_youjiantou%403x.png" />
+    <view class="bottom__line" />
+  </view>
+
+  <view wx:if="{{subDb == 1}}" class="flex flex--y-center flex--between  confing__cell" bindtap="toTodayMerchant" hover-class="none">
+    <view class="flex flex--y-center">
+      <image class="cell__img" src="http://img.binguoai.com/2018-05-27-icon_me_guanyu%402x.png" />
+      <text>今日菜品列表</text>
+    </view>
+    <image class="arrow" src="http://img.binguoai.com/2018-06-26-icon_youjiantou%403x.png" />
+    <view class="bottom__line" />
+  </view>
+
+  <view wx:if="{{onlineMeshProduct == 1}}" class="flex flex--y-center flex--between  confing__cell" bindtap="toMeshProductManage" hover-class="none">
+    <view class="flex flex--y-center">
+      <image class="cell__img" src="http://img.binguoai.com/2018-05-27-icon_me_gerenziliao%402x.png" />
+      <text>在线订餐菜品管理</text>
+    </view>
+    <image class="arrow" src="http://img.binguoai.com/2018-06-26-icon_youjiantou%403x.png" />
+    <view class="bottom__line" />
+  </view>
+
+  <view wx:if="{{onlineMeshProduct == 1}}" class="flex flex--y-center flex--between  confing__cell" bindtap="tomerchantinfoOrder" hover-class="none">
+    <view class="flex flex--y-center">
+      <image class="cell__img" src="http://img.binguoai.com/2018-05-27-icon_me_xieyi%402x.png" />
+      <text>订单列表</text>
+    </view>
+    <image class="arrow" src="http://img.binguoai.com/2018-06-26-icon_youjiantou%403x.png" />
+    <view class="bottom__line" />
+  </view>
+
+  <view wx:if="{{onlineMeshProduct == 1}}" class="flex flex--y-center flex--between  confing__cell" bindtap="tomerDataV" hover-class="none">
+    <view class="flex flex--y-center">
+      <image class="cell__img" src="http://img.binguoai.com/2018-05-27-icon_me_xieyi%402x.png" />
+      <text>菜品销售数据</text>
+    </view>
+    <image class="arrow" src="http://img.binguoai.com/2018-06-26-icon_youjiantou%403x.png" />
+    <view class="bottom__line" />
+  </view>
+
+  <view wx:if="{{onlineMeshProduct == 1}}" class="flex flex--y-center flex--between  confing__cell" bindtap="toCommemtDataV" hover-class="none">
+    <view class="flex flex--y-center">
+      <image class="cell__img" src="http://img.binguoai.com/2018-05-27-icon_me_gerenziliao%402x.png" />
+      <text>用户评论数据</text>
+    </view>
+    <image class="arrow" src="http://img.binguoai.com/2018-06-26-icon_youjiantou%403x.png" />
+    <view class="bottom__line" />
+  </view>
+
+  <view wx:if="{{isShowSideBoard}}" class="flex flex--y-center flex--between  confing__cell" bindtap="toSideboard" hover-class="none">
+    <view class="flex flex--y-center">
+      <image class="cell__img" src="http://img.binguoai.com/2018-05-27-icon_me_guanyu%402x.png" />
+      <text>智能取餐柜管理</text>
+    </view>
+    <image class="arrow" src="http://img.binguoai.com/2018-06-26-icon_youjiantou%403x.png" />
+    <view class="bottom__line" />
+  </view>
+  
+  <view class="flex flex--y-center flex--between  confing__cell" bindtap="toChangePayType" hover-class="none">
+    <view class="flex flex--y-center">
+      <image class="cell__img" src="http://img.binguoai.com/2018-05-27-icon_me_guanyu%402x.png" />
+      <text>支付方式管理</text>
+    </view>
+    <image class="arrow" src="http://img.binguoai.com/2018-06-26-icon_youjiantou%403x.png" />
+    <view class="bottom__line" />
+  </view>
+
+  <view class="flex flex--y-center flex--between  confing__cell" bindtap="toSeatManage" hover-class="none">
+    <view class="flex flex--y-center">
+      <image class="cell__img" src="http://img.binguoai.com/2018-05-27-icon_me_guanyu%402x.png" />
+      <text>位置码管理</text>
+    </view>
+    <image class="arrow" src="http://img.binguoai.com/2018-06-26-icon_youjiantou%403x.png" />
+    <view class="bottom__line" />
+  </view>
+  <!--  -->
+  <!--  -->
+
+
+  <!-- <navigator wx:if="{{onlineMeshProduct == 1}}" class="flex flex--y-center flex--between  confing__cell" url="/pages/line/index" hover-class="none">
+    <view class="flex flex--y-center">
+      <image class="cell__img" src="http://img.binguoai.com/2018-05-27-icon_me_guanyu%402x.png"/>
+      <text>在线营业数据管理</text>
+    </view>
+    <image class="arrow" src="http://img.binguoai.com/2018-06-26-icon_youjiantou%403x.png"/>
+    <view class="bottom__line"/>
+  </navigator> -->
+
+  <view wx:if="{{onlineMeshProduct == 1}}">
+    <view style="padding:10px 20px">
+      <view class="body-view">
+        自动开启预订
+        <switch checked="{{switch1Checked}}" bindchange="switch1Change" />
+      </view>
+    </view>
+    <view wx:if="{{isdisabled}}">
+      <view class="close_style" style="padding:10px 20px">
+        <view class="body-view">
+          早餐开启状态
+          <switch checked="{{breakfastStatus}}" bindchange="breakfastChange" disabled="true" />
+        </view>
+      </view>
+      <view class="close_style" style="padding:10px 20px">
+        <view class="body-view">
+          中餐开启状态
+          <switch checked="{{lunchStatus}}" bindchange="lunchChange" disabled="true" />
+        </view>
+      </view>
+      <view class="close_style" style="padding:10px 20px">
+        <view class="body-view">
+          晚餐开启状态
+          <switch checked="{{dinnerStatus}}" bindchange="dinnerChange" disabled="true" />
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{!isdisabled}}">
+      <view class="open_style" style="padding:10px 20px">
+        <view class="body-view">
+          早餐开启状态
+          <switch checked="{{breakfastStatus}}" bindchange="breakfastChange" />
+        </view>
+      </view>
+      <view class="open_style" style="padding:10px 20px">
+        <view class="body-view">
+          中餐开启状态
+          <switch checked="{{lunchStatus}}" bindchange="lunchChange" />
+        </view>
+      </view>
+      <view class="open_style" style="padding:10px 20px">
+        <view class="body-view">
+          晚餐开启状态
+          <switch checked="{{dinnerStatus}}" bindchange="dinnerChange" />
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view>
+    <text bindtap="changeMerchant" style="bottom: 0;position: absolute;text-decoration: underline;color: blue;">切换商户</text>
+  </view>
+</view>
+
+<!-- <view>
+    <text bindtap="toWxapp" style="bottom: 0;position: absolute;text-decoration: underline;color: blue; padding-left:200px;">切换小程序</text>
+  </view> -->

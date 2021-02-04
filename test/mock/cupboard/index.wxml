@@ -1,0 +1,78 @@
+<view class="banner">
+  <!-- banner -->
+  <image mode="aspectFill" src="https://cos.yunpengai.com/images/miniprograms/20200409223976747674.jpg"></image>
+</view>
+
+<view class="index_page" wx:if="{{!isNoError}}">
+
+  <view class="sideBoardName_box">{{sideBoardName}}</view>
+
+  <view class="action_group action_group_a" wx:if="{{false}}">
+    <view class="scanqr_box scanqr_box_data" hover-class="scanqr_box_hover" data-type="110" wx:if="{{showSave}}" bindtap="handleAction">
+      <van-icon name="todo-list-o" custom-class="icon" size="28" />
+      <text>食堂人流量</text>
+    </view>
+    <view class="scanqr_box scanqr_box_phone" hover-class="scanqr_box_hover" data-type="1" wx:if="{{showSave}}" bindtap="handleAction">
+      <van-icon name="todo-list-o" custom-class="icon" size="28" />
+      <text>手机号存餐</text>
+    </view>
+  </view>
+  <view class="index_main">
+    <view class="btn-group">
+      <image class="btn-bg a" src="/images/btn_bg1.png"></image>
+      <image class="btn-bg b" src="/images/btn_bg2.png"></image>
+      <view class="btn btn_b" bindtap="handleAction" data-type="6">
+        <text data-type="6">一键取餐</text>
+        <text data-type="6" class="cellSum" wx:if="{{cellSum>1}}">{{cellSum}}</text>
+      </view>
+      <view class="btn btn_c" bindtap="handleAction" data-type="4">
+        <text data-type="4">取餐码取餐</text>
+      </view>
+    </view>
+
+    <view class="action_group">
+      <view class="scanqr_box scanqr_box_all" hover-class="scanqr_box_hover" data-type="3" wx:if="{{showSave}}" bindtap="handleAction">
+        <van-icon name="todo-list-o" custom-class="icon" size="28" />
+        <text>清扫维护</text>
+      </view>
+      <view class="scanqr_box" hover-class="scanqr_box_hover" data-type="2" bindtap="handleAction">
+        <van-icon name="scan" size="28" custom-class="icon" />
+        <text>扫码存餐</text>
+      </view>
+    </view>
+
+
+
+  </view>
+
+  <!-- <view class="btn btn_c" bindtap="handleAction" data-type="3" wx:if="{{showSave}}">
+        <text data-type="3">清扫\n维护</text>
+      </view>
+  <view class="btn btn_a" bindtap="handleAction" data-type="1" wx:if="{{showSave}}">
+    <text data-type="1">手机\n存餐</text>
+  </view> -->
+
+
+  <view class="footer">
+    <view class="footer_box">
+      <text>云澎科技 提供技术支持</text>
+      <text class="yp_a" bindtap="handleCallSc" wx:if="{{support_phone}}">联系客服</text>
+    </view>
+  </view>
+</view>
+
+<view wx:else class="no_board">无此柜信息</view>
+
+<!-- <van-dialog use-slot title="为了更好的使用相关功能，建议授权手机号" show="{{ isShowDialog && !isOpen }}" bind:cancel="onCancel" show-cancel-button async-close confirm-button-open-type="getPhoneNumber" bind:getphonenumber="onGetPhoneNumber" bind:error="onError" bind:confirm="onConfirm">
+  <view>
+    <text>\r\n</text>
+  </view>
+</van-dialog> -->
+
+<van-dialog use-slot title="" show="{{ isShowDialog && isOpen }}" cancelButtonText="取餐码取餐" confirmButtonText="授权一键取餐" bind:cancel="onCancel" show-cancel-button async-close confirm-button-open-type="getPhoneNumber" bind:getphonenumber="onGetPhoneNumber"
+  bind:error="onError" bind:confirm="onConfirm">
+  <view class="open_box">
+    <view>此功能需要获取您的手机号，以便于系统能帮您一键自动打开。</view>
+    <view>无需您输入取餐码。</view>
+  </view>
+</van-dialog>

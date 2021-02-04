@@ -1,0 +1,14 @@
+/* pages/comment/dataView/home/index.wxss */
+
+.header{
+  background-color: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 24rpx;
+}
+.item-style{
+  text-align: center;
+  padding: 24rpx 0;
+}
+.current-food-item{
+  padding: 24rpx;
+}

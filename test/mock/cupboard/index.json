@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "智能取餐柜",
+  "usingComponents": {
+    "van-dialog": "../../assets/vant/dialog/index",
+    "van-icon": "../../assets/vant/icon/index"
+  }
+}

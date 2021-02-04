@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "van-dropdown-menu": "../../assets/vant/dropdown-menu/index",
+    "van-dropdown-item": "../../assets/vant/dropdown-item/index",
+    "van-search": "../../assets/vant/search/index",
+    "van-loading": "../../assets/vant/loading/index"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

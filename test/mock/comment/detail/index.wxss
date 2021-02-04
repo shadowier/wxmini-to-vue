@@ -1,0 +1,103 @@
+/* pages/comment/detail/index.wxss */
+
+.order-item-box {
+  background-color: #fff;
+  border-radius: 12rpx;
+}
+
+.order-item-header {
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  padding-bottom: 10rpx;
+}
+
+.order-item-header image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.order-item-info {
+  padding-left: 24rpx;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.order-item-title {
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+  line-height: 1.6;
+}
+
+.order-item-money {
+  color: rgb(199, 13, 13);
+  line-height: 1.2;
+}
+
+.order-item-quantity {
+  color: #666;
+  line-height: 1;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  padding-bottom: constant(safe-area-inset-bottom);
+  /* 兼容 iOS < 11.2 */
+  padding-bottom: env(safe-area-inset-bottom);
+  /* 兼容 iOS >= 11.2 */
+  box-shadow: -4rpx 0 12rpx rgba(0, 0, 0, .1);
+}
+
+.footer .actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 24rpx 12rpx;
+}
+
+.footer .actions .action-item {
+  margin-right: 24rpx;
+  border-radius: 30rpx;
+  height: 60rpx;
+  padding: 20rpx 36rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid #ccc;
+  box-sizing: border-box;
+  color: #555;
+  font-size: 24rpx;
+}
+
+.footer .actions .action-item.active {
+  color: rgb(255, 124, 17);
+  border-color: rgb(255, 124, 17);
+}
+
+.comment-textarea {
+  height: 340rpx;
+  padding: 36rpx;
+  width: auto;
+  padding: 18px;
+  box-shadow: border-box;
+
+}
+.comment-textarea-placeholder{
+  color: #aaa;
+}
+
+.prompt_info{
+  margin:24rpx 10rpx;
+  padding: 12rpx 24rpx;
+  background-color: rgb(255, 201, 25);
+  color: #fff;
+  font-weight: bold;
+  font-size: 26rpx;
+  border-radius: 2rpx; 
+}

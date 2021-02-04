@@ -1,0 +1,48 @@
+<!-- list -->
+
+<view class="more">
+  <view class="tabber t1">
+    <picker mode="date" value="{{date1}}" end="{{currentDate}}" bindchange="bindDateChange" data-key="1">
+      <view class="tabber-item picker">
+        {{date1}}
+      </view>
+    </picker>
+    <picker mode="date" value="{{date2}}" start="{{date1}}" end="{{dateEnd}}" bindchange="bindDateChange" data-key="2">
+      <view class="tabber-item picker">
+        {{date2}}
+      </view>
+    </picker>
+    <view class="tabber-item">
+      <checkbox-group bindchange="handleChangeCheckbox">
+        <label class="checkbox">
+          <checkbox value="1" />
+          <text>汇总</text>
+        </label>
+      </checkbox-group>
+    </view>
+  </view>
+  <view class="tabber">
+    <view class="tabber-item {{indexItem==2?'active':''}}" data-index="2" bindtap="handleChange">前天</view>
+    <view class="tabber-item {{indexItem==1?'active':''}}" data-index="1" bindtap="handleChange">昨天</view>
+    <view class="tabber-item {{indexItem==0?'active':''}}" data-index="0" bindtap="handleChange">今天</view>
+    <view class="tabber-item {{indexItem==3?'active':''}}" data-index="3" bindtap="handleChange">当月</view>
+  </view>
+
+  <view class="list_box">
+    <view class="flex flex--y-center flex--between  confing__cell" hover-class="none" wx:for="{{ list }}" wx:key="index">
+      <view class="flex flex--y-center flex-1">
+        <text class="order_date" wx:if="{{!issummary}}">{{item.order_date}}</text>
+        <text class="productName">{{item.productName}}</text>
+      </view>
+      <text class="total_count">{{item.total_count}}</text>
+      <view class="bottom__line" />
+    </view>
+    <view class="noList" wx:if="{{ !list[indexItem].length }}">
+      {{infoStatText}}
+    </view>
+  </view>
+</view>
+
+<!-- <view>
+    <text bindtap="toWxapp" style="bottom: 0;position: absolute;text-decoration: underline;color: blue; padding-left:200px;">切换小程序</text>
+  </view> -->

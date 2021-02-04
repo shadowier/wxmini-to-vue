@@ -1,0 +1,44 @@
+<view class="search">
+  <view class="search-left" wx:if="{{isSideBoard}}">
+    <van-dropdown-menu>
+      <van-dropdown-item bind:change="change" value="{{valueT}}" options="{{ option1 }}" />
+    </van-dropdown-menu>
+  </view>
+  <view class="search-left" wx:else>
+    <view>全部订单</view>
+  </view>
+  <van-search class="search-right" value="{{ searchValue }}" bind:clear="clear" placeholder="请输入搜索关键词" shape="round" use-action-slot bind:search="onSearch" bind:change="changeInput">
+    <view slot="action" bind:tap="onSearch">搜索</view>
+  </van-search>
+</view>
+
+<view class="page-orders">
+  <block wx:for="{{orders}}" wx:for-index="index" wx:for-item="order" wx:key="index">
+
+    <view class="order--info-base" bindtap="toOrderDetail" data-prop="{{order.orderNo}}" data-customer="{{order.customerId}}" data-com-index="{{index}}">
+      <view class="base__hd flex flex--y-center flex--between">
+        <text class="name">{{order.shopName}}</text>
+        <view class="order--pay-way {{payTypeStyle[order.payType]}}">{{payType[order.payType]}}</view>
+      </view>
+      <view class="base__bd flex flex--y-center flex--between">
+        <view class="bd-left">
+          <view class="order-no">订单号：{{order.orderNo}}</view>
+          <view class="order-no">手机号：{{order.customerPhone}}</view>
+          <view class="order-no">客户名：{{order.customerName}}</view>
+          <view class="order-no">用户分组：{{order.groupName || '未分组'}}</view>
+          <view class="order-date">{{order.formateOrderTime}}</view>
+        </view>
+        <view class="bd-right">
+          <view class="order-product">共{{order.itemCount}}项菜品</view>
+          <view class="order-price">￥{{order.fixPrice}}</view>
+        </view>
+      </view>
+    </view>
+
+  </block>
+  <view class="loading-box" wx-if="{{!isover}}">
+    <van-loading type="spinner" />
+  </view>
+  <view class="over_line" hidden="{{!isover}}">-------- 到底了 --------</view>
+
+</view>

@@ -1,0 +1,35 @@
+<view class="take">
+  <view class="banner">
+    <!-- banner -->
+    <image mode="aspectFill" src="https://cos.yunpengai.com/images/miniprograms/20200409223976747674.jpg"></image>
+  </view>
+  <view class="header header_info">
+    <input class="phone_box" disabled placeholder="取餐码"></input>
+  </view>
+  <view class="header">
+    <input value="{{number_no}}" class="phone_box" disabled placeholder="请使用下方键盘输入取餐码"></input>
+  </view>
+  <view class="codeLst">
+    <block wx:for="{{ codeList }}" wx:key="meal_code">
+      <view class="codeItem {{item.meal_code == number_no && 'active' || ''}}">
+        <van-cell title="取餐码：{{item.meal_code}}" data-code="{{item.meal_code}}" bindtap="handleSelectCode" value="格子：{{item.cell}}" center label="位置：{{item.side_board_name}}" size="large" />
+      </view>
+    </block>
+  </view>
+
+  <view class="keykeyboard_box">
+    <view class="keykeyboard">
+      <view class="key-item_box" wx:for="{{keykeynumbers}}" wx:key="key">
+        <view class="key-item" data-key="{{item.key}}" hover-class="key-item-hover" catchtouchstart="handleTapKey" hover-start-time="0" hover-stay-time="30">{{item.name}}</view>
+      </view>
+      <view class="key-item_box">
+        <view class="key-item key-icon" hover-class="key-item-hover" catchlongtap="handleTapClear" bindtouchstart="handleTapClearOne" hover-stay-time="30">
+          <image src="/images/delkey.png"></image>
+        </view>
+      </view>
+      <view class="key-item_box key-confim">
+        <view class="key-item" hover-class="key-item-hover" catchtouchstart="handleTapConfim" hover-stay-time="30">确认</view>
+      </view>
+    </view>
+  </view>
+</view>

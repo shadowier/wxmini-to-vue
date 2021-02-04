@@ -1,0 +1,12 @@
+<view class="more" wx:for="{{shopList}}" wx:key="index">
+  <view class="flex flex--y-center flex--between  confing__cell" data-shopid="{{item.shopId}}" data-name="{{item.shopName}}"
+             bindtap="toMeshOrderPage" hover-class="none">
+    <view class="flex flex--y-center">
+      <image class="cell__img" src="http://img.binguoai.com/2018-05-27-icon_me_xieyi%402x.png"/>
+      <text>{{item.shopName}}</text>
+    </view>
+    <image class="arrow" src="http://img.binguoai.com/2018-06-26-icon_youjiantou%403x.png"/>
+    <view class="bottom__line"/>
+  </view>
+
+</view>

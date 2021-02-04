@@ -1,0 +1,108 @@
+/* pages/comment/comment/index.wxss */
+view,
+text,
+image {
+  box-sizing: border-box;
+}
+
+page {
+  background-color: #f0f0f0;
+  box-sizing: border-box;
+  padding-bottom: 180rpx;
+}
+
+.content-box {
+  padding: 24rpx;
+  padding-bottom: 220rpx;
+}
+
+.showitem-box {
+  background-color: #fff;
+  margin-bottom: 24rpx;
+  border-radius: 12rpx; 
+  padding: 24rpx;
+}
+
+.showitem-item {
+  margin-top: 12rpx;
+}
+
+.showitem-item.showitem-text {
+  color: #333;
+  font-size: 28rpx;
+}
+
+.showitem-tile {
+  color: #333;
+  font-size: 28rpx;
+  margin-bottom: 12rpx;
+}
+
+.content-submit {
+  color: #fff;
+  background-color: rgb(17, 148, 255);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 8rpx;
+  height: 90rpx;
+  motion-path: 20px;
+  margin-bottom: 24rpx;
+}
+
+.content-action {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 24rpx;
+  background-color: #f0f0f0;
+  padding-top: 24rpx;
+  padding-bottom: constant(safe-area-inset-bottom);
+  /* 兼容 iOS < 11.2 */
+  padding-bottom: env(safe-area-inset-bottom);
+  /* 兼容 iOS >= 11.2 */
+}
+
+.order-item-box {
+  background-color: #fff;
+  border-radius: 12rpx;
+}
+
+.order-item-header {
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  padding-bottom: 10rpx;
+}
+
+.order-item-header image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.order-item-info {
+  padding-left: 24rpx;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.order-item-title {
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+  line-height: 1.6;
+}
+
+.order-item-money {
+  color: rgb(199, 13, 13);
+  line-height: 1.2;
+}
+
+.order-item-quantity {
+  color: #666;
+  line-height: 1;
+}

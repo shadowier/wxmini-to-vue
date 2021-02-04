@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "维护",
+  "usingComponents": {
+    "van-popup": "../../assets/vant/popup/index",
+    "van-grid": "../../assets/vant/grid/index",
+    "van-grid-item": "../../assets/vant/grid-item/index",
+    "van-tag": "../../assets/vant/tag/index",
+    "van-icon": "../../assets/vant/icon/index",
+    "van-tab": "../../assets/vantNew/tab/index",
+    "van-dialog": "../../assets/vant/dialog/index",
+    "van-tabs": "../../assets/vantNew/tabs/index"
+  }
+}

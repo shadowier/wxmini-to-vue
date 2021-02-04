@@ -1,0 +1,59 @@
+<view class="page-splash">
+  <view class="logo-box" wx:if="{{!needPostUserInfo}}">
+    <image class="logo" src="http://img.binguoai.com/2018-06-30-131530242354_.pic.jpg" />
+  </view>
+  <view wx:else class="auth-view">
+    <view class="{{tempClass}}">
+      <view class="floor" bindtap="hideDialog" wx:if="{{showDialog}}"></view>
+      <view class="dialog" wx:if="{{showDialog}}">
+        <view class="dialog-header">
+          <image src="http://img.binguoai.com/2018-06-30-131530242354_.pic.jpg"></image>
+        </view>
+        <view class="dialog-first">
+          <text wx:if="{{getHeader}}">注册需要获取手机号码</text>
+          <text wx:if="{{!getHeader}}">本小程序服务于企业内部特定范围人群\n注册需要获取微信头像</text>
+
+        </view>
+        <view class="dialog-second">
+          <text wx:if="{{getHeader}}">点击下方微信快速登录即可</text>
+          <text wx:if="{{!getHeader}}">点击下方授权微信头像即可</text>
+        </view>
+
+        <block wx:if="{{getHeader}}">
+          <button wx:if="{{ agree}}" class="dialog-button" bindtap="toggleDialog" bindgetphonenumber="onPhoneNumber" open-type="getPhoneNumber">
+            <image src="../../images/wechat.png" style=''></image>
+            <text>获取手机号</text>
+          </button>
+
+          <button wx:else class="dialog-button" bindtap="handeNoagree">
+            <image src="../../images/wechat.png" style=''></image>
+            <text>获取手机号</text>
+          </button>
+
+        </block>
+
+
+        <button wx:if="{{!getHeader}}" class="dialog-button" open-type="getUserInfo" bindgetuserinfo='bindGetUserInfo' style='top:71rpx'>
+          <image src="../../images/wechat.png"></image>
+          <text>授权微信头像</text>
+
+        </button>
+        <view style='margin-top:60rpx' wx:if="{{getHeader}}">
+          <button bindtap="phoneDialog" style="font-size: 13px;">输入手机号码登录></button>
+        </view>
+
+        <view class="{{agreementClass}}">
+
+          <label class="checkbox" bindtap="checkboxChange">
+            <checkbox value="{{agree}}" />
+          </label>
+          <text>阅读并同意《</text>
+          <text bindtap="openAgreement" style="text-decoration: underline;color: blue;">服务协议</text>
+          <text>》</text>
+        </view>
+      </view>
+
+
+    </view>
+  </view>
+</view>

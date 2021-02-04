@@ -1,0 +1,37 @@
+<!-- <view class="order_box">
+	{{orderData.orderNo}}
+	{{orderData.orderNo}}
+</view> -->
+
+<view class="prompt_info">
+	<text>点击单个项可进行评论回复</text>
+</view>
+
+<view wx:for="{{orderComment}}" wx:key="id" data-item="{{item}}" catchtap="handleCommentItem">
+	<common-component readOnly item="{{item}}" />
+</view>
+
+<view wx:for="{{orderItemComment}}" wx:key="index" class="order-item-box">
+	<view class="order-item-header">
+		<!-- <image src="http://q2.qlogo.cn/headimg_dl?dst_uin=1450941858&spec=100"></image> -->
+		<view class="order-item-info">
+			<view class="order-item-title">{{item.orderItem.productName}}</view>
+			<view class="order-item-money">¥{{item.orderItem.price / 100}}</view>
+			<view class="order-item-quantity">x{{item.orderItem.quantity}}</view>
+		</view>
+	</view>
+	<view wx:for="{{item.orderComment}}" wx:for-item="orderItem" wx:key="id"  data-item="{{orderItem}}" catchtap="handleCommentItem">
+		<common-component readOnly item="{{orderItem}}" />
+	</view>
+</view>
+
+<!-- <view class="footer" wx:if="{{isComment}}">
+	<view class="actions">
+		<view class="action-item active" bindtap="handleClickAction" data-type="0">追加评论</view>
+	</view>
+</view> -->
+
+
+<van-dialog show="{{showCommeentDialog}}" wx:if="{{showCommeentDialog}}" title="回复”{{currentItem.itemName}}“内容" show-cancel-button use-slot async-close bind:cancel="handleCancel" confirm-button-text="回复" bind:confirm="handleConfirmComment">
+	<textarea class="comment-textarea" placeholder="请输入最多50个字的回复" placeholder-class="comment-textarea-placeholder" maxlength="50" bindinput="handleChangeInput" value="{{commentValue}}"></textarea>
+</van-dialog>

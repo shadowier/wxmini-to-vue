@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-uploader": "../../../assets/vantNew/uploader/index",
+    "van-rate": "../../../assets/vantNew/rate/index",
+    "van-dialog": "../../../assets/vant/dialog/index",
+    "common-component": "../components/CommonComponent/index"
+  },
+  "navigationBarTitleText": "订单评价详情"
+}

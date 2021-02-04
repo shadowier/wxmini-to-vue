@@ -1,0 +1,92 @@
+<!-- tab -->
+<van-tabs active="{{ tabIndex }}" bind:change="onChangeTab">
+	<van-tab title="订单">
+		<!-- 部分 -->
+		<view class="header">
+			<!-- 筛选 -->
+			<van-row>
+				<van-col span="8">
+					<picker range-key="name" value="{{orderItemIndex}}" range="{{orderCommentItemEntity}}" bindchange="onChangeItemCode" data-key="order">
+						<view class="item-style">
+							{{orderCommentItemEntity[orderItemIndex].name}}
+						</view>
+					</picker>
+				</van-col>
+				<van-col span="8">
+					<view class="item-style" data-key="orderTime" bindtap="handleChangeTime">{{orderTime}}</view>
+				</van-col>
+				<van-col span="8">
+					<view class="item-style">
+						<checkbox-group bindchange="handleChangeTopTen" data-key="order">
+							<checkbox value="1" checked="{{orderIsTopTen}}">前十</checkbox>
+						</checkbox-group>
+					</view>
+				</van-col>
+			</van-row>
+		</view>
+		<!-- 列表 -->
+		<van-cell-group>
+			<block wx:for="{{showOrderCommentList}}" wx:key="entityId">
+				<van-cell title="{{item.entityName}}" value="评分：{{item.scoreAvg}}" url="/pages/merchantinfoOrder/order-detail?orderNo={{item.entityId}}" useLabelSlot center is-link>
+					<view slot="label">
+						<van-rate value="{{ item.scoreAvg }}" bind:change="onChange" readonly/>
+					</view>
+				</van-cell>
+			</block>
+		</van-cell-group>
+	</van-tab>
+
+
+	<!-- -----菜品---- -->
+
+
+	<van-tab title="菜品">
+
+		<view class="header">
+			<picker range-key="name" value="{{foodIndex}}" range="{{foodlist}}" bindchange="onFoodPickerChange" data-key="food">
+				<view class="current-food-item">
+					<van-button type="{{foodIndex<0?'danger':'primary'}}" block plain>{{foodIndex<0?'点击选择菜品':foodlist[foodIndex].name}}</van-button>
+				</view>
+			</picker>
+			<!-- 筛选 -->
+			<van-row>
+				<van-col span="8">
+					<picker range-key="name" value="{{foodItemIndex}}" range="{{foodCommentItemEntity}}" bindchange="onChangeItemCode" data-key="food">
+						<view class="item-style">
+							{{foodCommentItemEntity[foodItemIndex].name}}
+						</view>
+					</picker>
+				</van-col>
+				<van-col span="8">
+					<view class="item-style" data-key="foodTime" bindtap="handleChangeTime">{{foodTime}}</view>
+				</van-col>
+				<van-col span="8">
+					<view class="item-style">
+						<checkbox-group bindchange="handleChangeTopTen" data-key="food">
+							<checkbox value="1" checked="{{foodIsTopTen}}">前十</checkbox>
+						</checkbox-group>
+					</view>
+				</van-col>
+			</van-row>
+		</view>
+		<!-- 列表 -->
+		<van-cell-group>
+			<block wx:for="{{showFoodCommentList}}" wx:key="entityId">
+				<van-cell title="{{item.entityName}}" value="评论数：{{item.commentCount}}" useLabelSlot center>
+					<view slot="label">
+						<van-rate value="{{ item.scoreAvg }}" bind:change="onChange" readonly/>
+					</view>
+				</van-cell>
+			</block>
+		</van-cell-group>
+	</van-tab>
+</van-tabs>
+
+
+
+<!-- 时间选择 -->
+
+
+<van-popup show="{{ showDatetimePicker }}" position="bottom">
+	<van-datetime-picker type="year-month" value="{{ currentDate }}" max-date="{{ maxDate }}" bindconfirm="onConfirmDate" bindcancel="onCloseDatetimePicker" />
+</van-popup>

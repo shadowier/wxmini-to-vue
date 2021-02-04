@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "allowSyntheticDefaultImports": false,
+    "allowSyntheticDefaultImports": true,
     "checkJs": true,
+    "moduleResolution": "node",
     "baseUrl": "./src"
   },
   "exclude": [
